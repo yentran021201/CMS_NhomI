@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Extra functions
  */
@@ -9,7 +10,8 @@ if (!function_exists('envo_shopper_entry_footer')) :
      */
     add_action('envo_shopper_construct_entry_footer', 'envo_shopper_entry_footer');
 
-    function envo_shopper_entry_footer() {
+    function envo_shopper_entry_footer()
+    {
 
         // Get Categories for posts.
         $categories_list = get_the_category_list(' ');
@@ -50,15 +52,16 @@ if (!function_exists('envo_shopper_generate_construct_footer_widgets')) :
      */
     add_action('envo_shopper_generate_footer', 'envo_shopper_generate_construct_footer_widgets', 10);
 
-    function envo_shopper_generate_construct_footer_widgets() {
+    function envo_shopper_generate_construct_footer_widgets()
+    {
         if (is_active_sidebar('envo-shopper-footer-area')) {
-            ?>  				
+?>
             <div id="content-footer-section" class="container-fluid clearfix">
                 <div class="container">
                     <?php dynamic_sidebar('envo-shopper-footer-area'); ?>
-                </div>	
-            </div>		
-            <?php
+                </div>
+            </div>
+        <?php
         }
     }
 
@@ -69,25 +72,76 @@ if (!function_exists('envo_shopper_generate_construct_footer')) :
      * Build footer
      */
     add_action('envo_shopper_generate_footer', 'envo_shopper_generate_construct_footer', 20);
-
-    function envo_shopper_generate_construct_footer() {
+    // module footer - by Ngoc Yen
+    function envo_shopper_generate_construct_footer()
+    {
         ?>
-        <footer id="colophon" class="footer-credits container-fluid">
-            <div class="container">    
-                <div class="footer-credits-text text-center">
-                    <?php
-                    /* translators: %s: WordPress name with wordpress.org URL */
-                    printf(esc_html__('Proudly powered by %s', 'envo-shopper'), '<a href="' . esc_url(__('https://wordpress.org/', 'envo-shopper')) . '">' . esc_html__('WordPress', 'envo-shopper') . '</a>');
-                    ?>
-                    <span class="sep"> | </span>
-                    <?php
-                    /* translators: %1$s: Envo Shopper theme name (do not translate) with envothemes.com URL */
-                    printf(esc_html__('Theme: %1$s', 'envo-shopper'), '<a href="' . esc_url('https://envothemes.com/free-envo-shopper/') . '">' . esc_html_x('Envo Shopper', 'Theme name, do not translate', 'envo-shopper') . '</a>');
-                    ?>
+        <footer class="container-fluid bg-grey py-5" id="footer-module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="logo-part">
+                                    <img src="https://i.ibb.co/sHZz13b/logo.png" class="w-50 logo-footer">
+                                    <p>7637 Laurel Dr. King Of Prussia, PA 19406</p>
+                                    <p>Use this tool as test data for an automated system or find your next pen</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-4">
+                                <h6> About Company</h6>
+                                <p>But horizontal lines can only be a full pixel high.</p>
+                                <a href="#" class="btn-footer"> More Info </a><br>
+                                <a href="#" class="btn-footer"> Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 px-4">
+                                <h6> Help us</h6>
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li> <a href="#"> Home</a> </li>
+                                            <li> <a href="#"> About</a> </li>
+                                            <li> <a href="#"> Service</a> </li>
+                                            <li> <a href="#"> Team</a> </li>
+                                            <li> <a href="#"> Help</a> </li>
+                                            <li> <a href="#"> Contact</a> </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 px-4">
+                                        <ul>
+                                            <li> <a href="#"> Cab Faciliy</a> </li>
+                                            <li> <a href="#"> Fax</a> </li>
+                                            <li> <a href="#"> Terms</a> </li>
+                                            <li> <a href="#"> Policy</a> </li>
+                                            <li> <a href="#"> Refunds</a> </li>
+                                            <li> <a href="#"> Paypal</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <h6> Newsletter</h6>
+                                <div class="social">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </div>
+                                <form class="form-footer my-3">
+                                    <input type="text" placeholder="search here...." name="search">
+                                    <input type="button" value="Go">
+                                </form>
+                                <p>That's technology limitation of LCD monitors</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>	
+            </div>
         </footer>
-        <?php
+
+    <?php
     }
 
 endif;
@@ -99,12 +153,13 @@ if (!function_exists('envo_shopper_date')) :
      */
     add_action('envo_shopper_after_title', 'envo_shopper_date', 10);
 
-    function envo_shopper_date() {
-        ?>
+    function envo_shopper_date()
+    {
+    ?>
         <span class="posted-date">
             <?php echo esc_html(get_the_date()); ?>
         </span>
-        <?php
+    <?php
     }
 
 endif;
@@ -116,15 +171,16 @@ if (!function_exists('envo_shopper_author_meta')) :
      */
     add_action('envo_shopper_after_title', 'envo_shopper_author_meta', 20);
 
-    function envo_shopper_author_meta() {
-        ?>
+    function envo_shopper_author_meta()
+    {
+    ?>
         <span class="author-meta">
             <span class="author-meta-by"><?php esc_html_e('By', 'envo-shopper'); ?></span>
             <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename'))); ?>">
                 <?php the_author(); ?>
             </a>
         </span>
-        <?php
+    <?php
     }
 
 endif;
@@ -136,21 +192,22 @@ if (!function_exists('envo_shopper_comments')) :
      */
     add_action('envo_shopper_after_title', 'envo_shopper_comments', 30);
 
-    function envo_shopper_comments() {
-        ?>
+    function envo_shopper_comments()
+    {
+    ?>
         <span class="comments-meta">
             <?php
             if (!comments_open()) {
                 esc_html_e('Off', 'envo-shopper');
             } else {
-                ?>
+            ?>
                 <a href="<?php the_permalink(); ?>#comments" rel="nofollow" title="<?php esc_attr_e('Comment on ', 'envo-shopper') . the_title_attribute(); ?>">
                     <?php echo absint(get_comments_number()); ?>
                 </a>
             <?php } ?>
             <i class="la la-comments-o"></i>
         </span>
-        <?php
+    <?php
     }
 
 endif;
@@ -162,9 +219,10 @@ if (!function_exists('envo_shopper_post_author')) :
      */
     add_action('envo_shopper_construct_post_author', 'envo_shopper_post_author');
 
-    function envo_shopper_post_author() {
-        ?>
-        <div class="postauthor-container">			  
+    function envo_shopper_post_author()
+    {
+    ?>
+        <div class="postauthor-container">
             <div class="postauthor-title">
                 <h4 class="about">
                     <?php esc_html_e('About The Author', 'envo-shopper'); ?>
@@ -173,13 +231,13 @@ if (!function_exists('envo_shopper_post_author')) :
                     <span class="fn">
                         <?php the_author_posts_link(); ?>
                     </span>
-                </div> 				
-            </div>        	
-            <div class="postauthor-content">	             						           
+                </div>
+            </div>
+            <div class="postauthor-content">
                 <p>
                     <?php the_author_meta('description') ?>
-                </p>					
-            </div>	 		
+                </p>
+            </div>
         </div>
         <?php
     }
@@ -193,8 +251,9 @@ if (!function_exists('envo_shopper_breadcrumbs')) :
      */
     add_action('envo_shopper_page_area', 'envo_shopper_breadcrumbs');
 
-    function envo_shopper_breadcrumbs() {
-        if (function_exists('yoast_breadcrumb') && (!is_home() && !is_front_page() )) {
+    function envo_shopper_breadcrumbs()
+    {
+        if (function_exists('yoast_breadcrumb') && (!is_home() && !is_front_page())) {
             yoast_breadcrumb('<p id="breadcrumbs" class="text-left">', '</p>');
         }
     }
@@ -208,9 +267,10 @@ if (!function_exists('envo_shopper_top_bar')) :
      */
     add_action('envo_shopper_construct_top_bar', 'envo_shopper_top_bar');
 
-    function envo_shopper_top_bar() {
+    function envo_shopper_top_bar()
+    {
         if (is_active_sidebar('envo-shopper-top-bar-area')) {
-            ?>
+        ?>
             <div class="top-bar-section container-fluid">
                 <div class="<?php echo esc_attr(get_theme_mod('top_bar_content_width', 'container')); ?>">
                     <div class="row">
@@ -218,7 +278,7 @@ if (!function_exists('envo_shopper_top_bar')) :
                     </div>
                 </div>
             </div>
-            <?php
+        <?php
         }
     }
 
@@ -230,7 +290,8 @@ if (!function_exists('envo_shopper_generate_construct_the_content')) :
      */
     add_action('envo_shopper_generate_the_content', 'envo_shopper_generate_construct_the_content');
 
-    function envo_shopper_generate_construct_the_content() {
+    function envo_shopper_generate_construct_the_content()
+    {
         if (have_posts()) :
             while (have_posts()) : the_post();
                 get_template_part('content', get_post_format());
@@ -249,12 +310,13 @@ if (!function_exists('envo_shopper_generate_singular_content')) :
      */
     add_action('envo_shopper_singular_content', 'envo_shopper_generate_singular_content');
 
-    function envo_shopper_generate_singular_content() {
+    function envo_shopper_generate_singular_content()
+    {
         ?>
         <div class="single-entry-summary">
-            <?php do_action('envo_shopper_before_content'); ?> 
+            <?php do_action('envo_shopper_before_content'); ?>
             <?php the_content(); ?>
-            <?php do_action('envo_shopper_after_content'); ?> 
+            <?php do_action('envo_shopper_after_content'); ?>
         </div><!-- .single-entry-summary -->
         <?php
     }
@@ -267,23 +329,24 @@ if (!function_exists('envo_shopper_generate_construct_author_comments')) :
      */
     add_action('envo_shopper_after_single_post', 'envo_shopper_generate_construct_author_comments');
 
-    function envo_shopper_generate_construct_author_comments() {
+    function envo_shopper_generate_construct_author_comments()
+    {
         $authordesc = get_the_author_meta('description');
         if (!empty($authordesc)) {
-            ?>
+        ?>
             <div class="single-footer row">
                 <div class="col-md-4">
-                    <?php do_action('envo_shopper_construct_post_author'); ?> 
+                    <?php do_action('envo_shopper_construct_post_author'); ?>
                 </div>
                 <div class="col-md-8">
-                    <?php comments_template(); ?> 
+                    <?php comments_template(); ?>
                 </div>
             </div>
         <?php } else { ?>
             <div class="single-footer">
-                <?php comments_template(); ?> 
+                <?php comments_template(); ?>
             </div>
-            <?php
+<?php
         }
     }
 
@@ -294,12 +357,13 @@ endif;
  */
 if (!function_exists('envo_shopper_prev_next_links')) :
 
-    function envo_shopper_prev_next_links() {
+    function envo_shopper_prev_next_links()
+    {
         the_post_navigation(
-                array(
-                    'prev_text' => '<span class="screen-reader-text">' . __('Previous Post', 'envo-shopper') . '</span><span aria-hidden="true" class="nav-subtitle">' . __('Previous', 'envo-shopper') . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><i class="la la-angle-double-left" aria-hidden="true"></i></span>%title</span>',
-                    'next_text' => '<span class="screen-reader-text">' . __('Next Post', 'envo-shopper') . '</span><span aria-hidden="true" class="nav-subtitle">' . __('Next', 'envo-shopper') . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper"><i class="la la-angle-double-right" aria-hidden="true"></i></span></span>',
-                )
+            array(
+                'prev_text' => '<span class="screen-reader-text">' . __('Previous Post', 'envo-shopper') . '</span><span aria-hidden="true" class="nav-subtitle">' . __('Previous', 'envo-shopper') . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><i class="la la-angle-double-left" aria-hidden="true"></i></span>%title</span>',
+                'next_text' => '<span class="screen-reader-text">' . __('Next Post', 'envo-shopper') . '</span><span aria-hidden="true" class="nav-subtitle">' . __('Next', 'envo-shopper') . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper"><i class="la la-angle-double-right" aria-hidden="true"></i></span></span>',
+            )
         );
     }
 
