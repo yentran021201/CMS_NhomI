@@ -7,6 +7,8 @@
         <?php wp_head(); ?>
         <!-- css sidebar -->
         <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/sidebar.css" type="text/css" media="screen" />
+        <!-- css footer ne -->
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/footer.css" type="text/css" media="screen" />
     </head>
     <body id="blog" <?php body_class(); ?>>
         <?php wp_body_open(); ?>
